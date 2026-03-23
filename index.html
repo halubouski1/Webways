@@ -255,8 +255,40 @@
 
         gtag('config', 'G-EDBSSXJLQ7');
         </script>
+
+        <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7.18/klaro.min.css">
+        <script src="https://cdn.kiprotect.com/klaro/v0.7.18/klaro.min.js"></script>
+        <script>
+window.klaroConfig = {
+  elementID: 'klaro',
+  storageMethod: 'localStorage',
+  cookieName: 'klaro-consent',
+  lang: 'ru',
+
+  translations: {
+    ru: {
+      consentModal: {
+        title: 'Мы используем cookies',
+        description: 'Мы используем cookies для улучшения сайта.'
+      },
+      acceptAll: 'Принять всё',
+      decline: 'Отклонить'
+    }
+  },
+
+  services: [
+    {
+      name: 'analytics',
+      title: 'Аналитика',
+      purposes: ['analytics'],
+      required: false
+    }
+  ]
+};
+</script>
     </head>
     <body>
+        <div id="klaro"></div>
         <header class="header">
         <div class="container header-wrapper glass">
             <a class="logo" href="/" aria-label="Webways — Главная">
