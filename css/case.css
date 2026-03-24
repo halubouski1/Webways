@@ -2,6 +2,10 @@ picture {
     margin-bottom: 30px;
 }
 
+.accent-black {
+    font-weight: 500;
+}
+
 @media (max-width: 430px) {
     picture {
         margin-bottom: 20px;
