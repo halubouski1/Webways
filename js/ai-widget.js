@@ -37,9 +37,13 @@
       body: JSON.stringify({ messages: history }),
     });
 
-    if (!res.ok) throw new Error('API error');
-
     var data = await res.json();
+
+    if (!res.ok) {
+      console.error('AI Widget error:', data);
+      throw new Error(data.error || 'API error');
+    }
+
     var reply = data.reply || 'Не удалось получить ответ.';
 
     history.push({ role: 'assistant', content: reply });

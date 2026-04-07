@@ -56,6 +56,13 @@ export async function onRequestPost(context) {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (!env.OPENROUTER_API_KEY) {
+    return Response.json(
+      { error: 'OPENROUTER_API_KEY environment variable is not set' },
+      { status: 500, headers: corsHeaders }
+    );
+  }
+
   try {
     const { messages } = await request.json();
 
@@ -64,6 +71,7 @@ export async function onRequestPost(context) {
     }
 
     const trimmed = messages.slice(-10);
+    const model = env.AI_MODEL || 'qwen/qwen3-235b-a22b:free';
 
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
@@ -74,7 +82,7 @@ export async function onRequestPost(context) {
         'X-Title': 'Webways AI Navigator',
       },
       body: JSON.stringify({
-        model: env.AI_MODEL || 'qwen/qwen3.6-plus:free',
+        model: model,
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           ...trimmed,
@@ -84,16 +92,22 @@ export async function onRequestPost(context) {
       }),
     });
 
+    const data = await res.json();
+
     if (!res.ok) {
-      const err = await res.text();
-      return Response.json({ error: 'AI request failed', detail: err }, { status: 502, headers: corsHeaders });
+      return Response.json(
+        { error: 'OpenRouter error', status: res.status, detail: data },
+        { status: 502, headers: corsHeaders }
+      );
     }
 
-    const data = await res.json();
     const reply = data.choices?.[0]?.message?.content || 'Не удалось получить ответ.';
 
     return Response.json({ reply }, { headers: corsHeaders });
   } catch (err) {
-    return Response.json({ error: 'Server error', detail: err.message }, { status: 500, headers: corsHeaders });
+    return Response.json(
+      { error: 'Server error', detail: err.message },
+      { status: 500, headers: corsHeaders }
+    );
   }
 }
