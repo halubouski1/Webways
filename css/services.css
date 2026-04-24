@@ -6,7 +6,7 @@
 }
 
 .mobile-max-width {
-    max-width: 180px !important;
+    max-width: 184px !important;
 }
 }
 
@@ -17,5 +17,7 @@
 }
 
 @media (max-width:430px) {
-
+.mobile-max-width {
+    max-width: 160px !important;
+}
 }
