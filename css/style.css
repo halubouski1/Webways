@@ -256,6 +256,10 @@ font-size: 38px;
         font-size: 30px;
         margin-bottom: 134px;
     }
+
+        .hero-svg-logo {
+        width: 260px;
+    }
 }
 
 .how-step-image {
