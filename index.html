@@ -507,8 +507,14 @@
                         <a href="/cases/alena-grebenchuk" class="card" aria-label="Кейс: Алена Гребенчук">
                             <h3 class="card-title glass">Алена Гребенчук</h3>
                             <picture>
-                            <source srcset="/img/cases-card-1.avif" type="image/avif">
-                            <img src="/img/cases-card-1.jpg" alt="Кейс Webways для Алены Гребенчук — дизайн и разработка сайта">
+                            <source type="image/avif" srcset="/img/cases-card-1.avif">
+                            <img src="/img/cases-card-1-800.jpg"
+                                srcset="/img/cases-card-1-400.jpg 400w,
+                                        /img/cases-card-1-800.jpg 800w,
+                                        /img/cases-card-1-1200.jpg 1200w"
+                                sizes="(max-width: 1070px) 100vw, 345px"
+                                alt="Кейс Webways для Алены Гребенчук — дизайн и разработка сайта"
+                                width="345" height="378" loading="lazy">
                             </picture>
                         </a>
                         </div>
