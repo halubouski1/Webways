@@ -246,6 +246,13 @@ font-size: 38px;
     }
 }
 
+@media (max-width: 340px) {
+.telegram-link, .whatsapp-link {
+    padding: 10px 34px 10px 34px;
+    background-position: top 15px right 16px;
+}
+}
+
 .how-step-image {
     position: relative;
 }
