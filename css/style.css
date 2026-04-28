@@ -251,6 +251,11 @@ font-size: 38px;
     padding: 10px 34px 10px 34px;
     background-position: top 15px right 16px;
 }
+
+    .hero-title {
+        font-size: 32px;
+        margin-bottom: 134px;
+    }
 }
 
 .how-step-image {
