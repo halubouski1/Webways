@@ -10,14 +10,14 @@ img {
 
 .num-orbits {
     position: relative;
-    width: 100%;
-    height: 620px;
+    width: 90%;
+    height: 560px;
 }
 
 .num-orbit {
     position: absolute;
     width: 34%;
-    height: 65%;
+    height: 63%;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,10 @@ img {
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    filter: blur(48px);
+    filter: blur(36px);
+    opacity: 1;
+    animation: num-orbit-glow-pulse 3.8s ease-in-out infinite;
+    will-change: opacity;
     z-index: 0;
 }
 
@@ -74,8 +77,9 @@ img {
 
 .num-orbit--weeks::after {
     background:
-        radial-gradient(circle at 8% 22%, rgba(27, 106, 201, 0.45) 0%, rgba(27, 106, 201, 0) 55%),
-        radial-gradient(circle at 88% 76%, rgba(27, 106, 201, 0.85) 0%, rgba(27, 106, 201, 0) 38%);
+        radial-gradient(circle at 8% 22%, rgba(27, 106, 201, 0.7) 0%, rgba(27, 106, 201, 0) 55%),
+        radial-gradient(circle at 88% 76%, rgba(27, 106, 201, 1) 0%, rgba(27, 106, 201, 0) 40%);
+    animation-duration: 3.8s;
 }
 
 .num-orbit--adaptive {
@@ -85,14 +89,16 @@ img {
 
 .num-orbit--adaptive::after {
     background:
-        radial-gradient(circle at 92% 18%, rgba(27, 106, 201, 0.45) 0%, rgba(27, 106, 201, 0) 55%),
-        radial-gradient(circle at 12% 68%, rgba(27, 106, 201, 0.85) 0%, rgba(27, 106, 201, 0) 38%);
+        radial-gradient(circle at 92% 18%, rgba(27, 106, 201, 0.7) 0%, rgba(27, 106, 201, 0) 55%),
+        radial-gradient(circle at 12% 68%, rgba(27, 106, 201, 1) 0%, rgba(27, 106, 201, 0) 40%);
+    animation-duration: 4.5s;
+    animation-delay: -1.3s;
 }
 
 .num-orbit--projects {
     top: 174px;
     left: 48%;
-    transform: translateX(-50%);
+    transform: translateX(-51%);
 }
 
 .num-orbit--projects::before {
@@ -101,10 +107,23 @@ img {
 
 .num-orbit--projects::after {
     background:
-        radial-gradient(circle at 14% 12%, rgba(27, 106, 201, 0.35) 0%, rgba(27, 106, 201, 0) 40%),
-        radial-gradient(circle at 4% 30%, rgba(27, 106, 201, 0.85) 0%, rgba(27, 106, 201, 0) 35%),
-        radial-gradient(circle at 86% 12%, rgba(27, 106, 201, 0.85) 0%, rgba(27, 106, 201, 0) 40%),
-        radial-gradient(circle at 96% 30%, rgba(27, 106, 201, 0.35) 0%, rgba(27, 106, 201, 0) 35%);
+        radial-gradient(circle at 14% 12%, rgba(27, 106, 201, 0.55) 0%, rgba(27, 106, 201, 0) 42%),
+        radial-gradient(circle at 4% 30%, rgba(27, 106, 201, 1) 0%, rgba(27, 106, 201, 0) 37%),
+        radial-gradient(circle at 86% 12%, rgba(27, 106, 201, 1) 0%, rgba(27, 106, 201, 0) 42%),
+        radial-gradient(circle at 96% 30%, rgba(27, 106, 201, 0.55) 0%, rgba(27, 106, 201, 0) 37%);
+    animation-duration: 5.1s;
+    animation-delay: -2.7s;
+}
+
+@keyframes num-orbit-glow-pulse {
+    0%, 100% {
+        opacity: 1;
+        filter: blur(34px);
+    }
+    50% {
+        opacity: 0.48;
+        filter: blur(48px);
+    }
 }
 
 .num-orbit .num-row {
@@ -156,6 +175,10 @@ img {
     .num-orbit {
         width: 350px;
         height: 350px;
+    }
+
+    .num-orbits {
+        height: 620px;
     }
     .num-orbit .number,
     .num-orbit .plus {
